@@ -40,7 +40,7 @@ fun getAllGames(): List<Game> {
     )
 }
 
-@Composable
+
 fun getGamesByStudio(studio: String): List<Game> {
     return getAllGames().filter { game -> game.studio.startsWith(prefix = studio, ignoreCase = true) }
 

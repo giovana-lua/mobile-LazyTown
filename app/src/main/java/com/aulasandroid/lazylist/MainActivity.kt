@@ -13,6 +13,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -97,12 +101,31 @@ fun GamesScreen(modifier: Modifier = Modifier) {
             }
         )
 
-        val games = getAllGames()
-        LazyColumn() {
-            items(games ) { game ->
-                Text(text = "item ${game.title}")
+//        LazyRow() {
+//            items(games) {
+//                CardStudio(it)
+//            }
+//        }
+//
+//
+//        LazyColumn() {
+//            items(games) { game ->
+//                GameCard(game = game)
+//            }
+//        }
+        LazyVerticalGrid(
+            // Define quantas colunas
+            // Size define o tamanho
+            // Adaptive: se algum item sair da tela ele adapta os outros pra caber na tela
+            columns = GridCells.Adaptive(100.dp)
+        ) {
+            //define quantos items
+            items(games) {
+                GameCard(it)
             }
         }
+
+
     }
 }
 
